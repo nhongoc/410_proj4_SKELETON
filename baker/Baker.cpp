@@ -4,6 +4,7 @@
 #include "../includes/externs.h"
 #include "../includes/box.h"
 #include "../includes/PRINT.h"
+#include "../includes/datastructs.h"
 using namespace std;
 
 Baker::Baker(int id):id(id)
