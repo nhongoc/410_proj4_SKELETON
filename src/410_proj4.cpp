@@ -86,6 +86,20 @@ void audit_results() {
 
 int main()
 {
-	//TODO your code here
+	Waiter waiter = Waiter(1, "in3.txt");
+	vector<Baker> bakers;
+	int numberOfBakers = 3;
+	for (int i = 0; i < numberOfBakers; i++) {
+		bakers.push_back(Baker(i + 1));
+	}
+	vector<thread> threads;
+	threads.push_back(thread(&Waiter::beWaiter, waiter));
+	for (Baker baker : bakers) {
+		threads.push_back(thread(&Baker::beBaker, baker));
+	}
+	for (auto& t : threads) {
+		t.join();
+	}
+	audit_results();
 	return SUCCESS;
 }
